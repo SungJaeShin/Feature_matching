@@ -53,7 +53,7 @@ Clone the repository and build and run simultaneously:
    - 3 &rarr; apply DAISY
 - **MIN_DIS** (include.h): Put value to change feature's Euclidean distance when using GoodFeaturesToTrack extractor
 - **query_path, cand_path** (matching.cpp): Put absolute path for getting query image and candidate image
-- **save_path** (include.h): Put absolute path for saving matching result 
+- **save_path** (plot.h): Put absolute path for saving matching result 
 
 ## 5. Results 
    <table>
