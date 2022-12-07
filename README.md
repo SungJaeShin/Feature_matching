@@ -5,7 +5,7 @@
    - Query Image \
       <img src="./query.png" width=50% height=50% title="Query Image"/> 
       
-   - Candidate Image \ 
+   - Candidate Image \newline
       <img src="./cand.png" width=50% height=50% title="Candidate Image"/>  
 
 ## 1. Prerequisites
