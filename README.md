@@ -109,3 +109,6 @@ Clone the repository and build and run simultaneously:
       </tr>
    </table>
 
+## 6. Best Results
+   - ORB + DAISY + FM (inliers 57)
+      <img src="./results/3_final_orb_daisy_result.png"/>
