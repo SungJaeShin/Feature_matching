@@ -112,3 +112,9 @@ Clone the repository and build and run simultaneously:
 ## 6. Best Results
    - ORB + DAISY + FM (inliers 57)
       <img src="./results/3_final_orb_daisy_result.png"/>
+
+## 7. Future Works
+   - Apply SuperPoint & SuperGlue
+   - Apply GCBB (Linear time vehicle relocation in SLAM paper)
+   - Apply time consumption
+   - Apply VFC outlier rejection (Robust Point Matching via Vector Field Consensus)
