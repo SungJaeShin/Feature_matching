@@ -63,9 +63,9 @@ Clone the repository and build and run simultaneously:
          <td> ORB + DAISY + FM (inliers 57)</td>
       </tr> 
       <tr>
-         <td><img src="./results/3_final_orb_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
-         <td><img src="./results/3_final_orb_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
-         <td><img src="./results/3_final_orb_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./results/3_final_orb_akaze_result.png"/> </td>
+         <td><img src="./results/3_final_orb_surf_result.png"/> </td>
+         <td><img src="./results/3_final_orb_daisy_result.png"/> </td>
       </tr>
       <tr>
          <td> GFTT + AKAZE + FM (inliers 10)</td>
