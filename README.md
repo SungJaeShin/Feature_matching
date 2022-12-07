@@ -8,8 +8,8 @@
          <td> Candidate Image </td>
       </tr> 
       <tr>
-         <td><img src="./query.png" width=50% height=50% title="Query Image"/> </td>
-         <td><img src="./cand.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./query.png"/> </td>
+         <td><img src="./cand.png"/> </td>
       </tr>
    </table>
 
@@ -73,9 +73,9 @@ Clone the repository and build and run simultaneously:
          <td> GFTT + DAISY + FM (inliers 10)</td>
       </tr> 
       <tr>
-         <td><img src="./results/3_final_gftt_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
-         <td><img src="./results/3_final_gftt_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
-         <td><img src="./results/3_final_gftt_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./results/3_final_gftt_akaze_result.png"/> </td>
+         <td><img src="./results/3_final_gftt_surf_result.png"/> </td>
+         <td><img src="./results/3_final_gftt_daisy_result.png"/> </td>
       </tr>
       <tr>
          <td> SIFT + AKAZE + FM (inliers 11)</td>
@@ -83,9 +83,9 @@ Clone the repository and build and run simultaneously:
          <td> SIFT + DAISY + FM (inliers 19)</td>
       </tr> 
       <tr>
-         <td><img src="./results/3_final_sift_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
-         <td><img src="./results/3_final_sift_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
-         <td><img src="./results/3_final_sift_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./results/3_final_sift_akaze_result.png"/> </td>
+         <td><img src="./results/3_final_sift_surf_result.png"/> </td>
+         <td><img src="./results/3_final_sift_daisy_result.png"/> </td>
       </tr>
       <tr>
          <td> GFTT + ORB + AKAZE + FM (inliers 10)</td>
@@ -93,9 +93,9 @@ Clone the repository and build and run simultaneously:
          <td> GFTT + ORB + DAISY + FM (inliers 8)</td>
       </tr> 
       <tr>
-         <td><img src="./results/3_final_gftt_orb_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
-         <td><img src="./results/3_final_gftt_orb_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
-         <td><img src="./results/3_final_gftt_orb_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./results/3_final_gftt_orb_akaze_result.png"/> </td>
+         <td><img src="./results/3_final_gftt_orb_surf_result.png"/> </td>
+         <td><img src="./results/3_final_gftt_orb_daisy_result.png"/> </td>
       </tr>
       <tr>
          <td> GFTT + SIFT + AKAZE + FM (inliers 10)</td>
@@ -103,9 +103,9 @@ Clone the repository and build and run simultaneously:
          <td> GFTT + SIFT + DAISY + FM (inliers 9)</td>
       </tr> 
       <tr>
-         <td><img src="./results/3_final_gftt_sift_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
-         <td><img src="./results/3_final_gftt_sift_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
-         <td><img src="./results/3_final_gftt_sift_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./results/3_final_gftt_sift_akaze_result.png"/> </td>
+         <td><img src="./results/3_final_gftt_sift_surf_result.png"/> </td>
+         <td><img src="./results/3_final_gftt_sift_daisy_result.png"/> </td>
       </tr>
    </table>
 
