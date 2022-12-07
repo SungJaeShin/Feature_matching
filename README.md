@@ -58,14 +58,54 @@ Clone the repository and build and run simultaneously:
 ## 5. Results 
    <table>
       <tr>
-         <td> ORB + AKAZE + FM </td>
-         <td> ORB + SURF + FM </td>
-         <td> ORB + DAISY + FM </td>
+         <td> ORB + AKAZE + FM (inliers 22)</td>
+         <td> ORB + SURF + FM (inliers 44)</td>
+         <td> ORB + DAISY + FM (inliers 57)</td>
       </tr> 
       <tr>
          <td><img src="./results/3_final_orb_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
          <td><img src="./results/3_final_orb_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
          <td><img src="./results/3_final_orb_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
+      </tr>
+      <tr>
+         <td> GFTT + AKAZE + FM (inliers 10)</td>
+         <td> GFTT + SURF + FM (inliers 9)</td>
+         <td> GFTT + DAISY + FM (inliers 10)</td>
+      </tr> 
+      <tr>
+         <td><img src="./results/3_final_gftt_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
+         <td><img src="./results/3_final_gftt_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./results/3_final_gftt_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
+      </tr>
+      <tr>
+         <td> SIFT + AKAZE + FM (inliers 11)</td>
+         <td> SIFT + SURF + FM (inliers 17)</td>
+         <td> SIFT + DAISY + FM (inliers 19)</td>
+      </tr> 
+      <tr>
+         <td><img src="./results/3_final_sift_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
+         <td><img src="./results/3_final_sift_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./results/3_final_sift_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
+      </tr>
+      <tr>
+         <td> GFTT + ORB + AKAZE + FM (inliers 10)</td>
+         <td> GFTT + ORB + SURF + FM (inliers 10)</td>
+         <td> GFTT + ORB + DAISY + FM (inliers 8)</td>
+      </tr> 
+      <tr>
+         <td><img src="./results/3_final_gftt_orb_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
+         <td><img src="./results/3_final_gftt_orb_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./results/3_final_gftt_orb_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
+      </tr>
+      <tr>
+         <td> GFTT + SIFT + AKAZE + FM (inliers 10)</td>
+         <td> GFTT + SIFT + SURF + FM (inliers 9)</td>
+         <td> GFTT + SIFT + DAISY + FM (inliers 9)</td>
+      </tr> 
+      <tr>
+         <td><img src="./results/3_final_gftt_sift_akaze_result.png" width=50% height=50% title="Query Image"/> </td>
+         <td><img src="./results/3_final_gftt_sift_surf_result.png" width=50% height=50% title="Candidate Image"/> </td>
+         <td><img src="./results/3_final_gftt_sift_daisy_result.png" width=50% height=50% title="Candidate Image"/> </td>
       </tr>
    </table>
 
