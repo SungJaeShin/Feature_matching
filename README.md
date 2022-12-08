@@ -16,7 +16,7 @@
    </table>
 
 ## 1. Dependencies
-   - OpenCV 3.2.0, OpenCV Contrib 3.2.0, g++ 11 version 
+   - OpenCV 3.2.0, OpenCV Contrib 3.2.0, C++ 11 version 
 
 ## 2. Methodology to apply feature matching
    - Feature Extraction Method
