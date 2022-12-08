@@ -51,6 +51,13 @@ Clone the repository and build and run simultaneously:
    - 1 &rarr; apply AKAZE
    - 2 &rarr; apply SURF
    - 3 &rarr; apply DAISY
+- **MATCHER_MODE** (include.h):
+   - 1 &rarr; apply BF Matcher (Bruth-Force)
+   - 2 &rarr; apply FLANN Matcher (Fast Library for Approximate Nearest Neighbors)
+- **MATCHING_MODE** (include.h):
+   - 1 &rarr; apply vanilla match
+   - 2 &rarr; apply knn match
+   - 3 &rarr; apply radius match
 - **MIN_DIS** (include.h): Put value to change feature's Euclidean distance when using GoodFeaturesToTrack extractor
 - **query_path, cand_path** (matching.cpp): Put absolute path for getting query image and candidate image
 - **save_path** (plot.h): Put absolute path for saving matching result 
