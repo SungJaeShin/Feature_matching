@@ -5,8 +5,8 @@
 
 int main()
 {
-    std::string query_path = "/home/sj/workspace/paper_ws/icra2023/src/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_query.png";
-    std::string cand_path = "/home/sj/workspace/paper_ws/icra2023/src/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_cand.png";
+    std::string query_path = "~/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_query.png";
+    std::string cand_path = "~/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_cand.png";
     cv::Mat query = cv::imread(query_path);
     cv::Mat cand = cv::imread(cand_path);
 
