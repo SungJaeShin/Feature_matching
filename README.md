@@ -87,11 +87,11 @@ This variables are not requirement, but the following variables are also conside
    - ORB &rarr; cv::NORM_HAMMING
 
 - [CASE 2] When you use **radiusMatch**, please change maxDistance argument
-   - In above case, there are some preference radius results !!
+   - In above case, there are some preference radius results !! (Default = 0.3)
       - [Preference radius] 0.4 => 405 matches / 0.3 => 183 matches / 0.2 => 117 matches
 
-- [CASE 3] When you use **findFundamentalMat**, please change ransacReprojThreshold argument
-   - Default value is '1', but if you want to get more robust result, then change **0.1** or etc. 
+- [CASE 3] When you use **findFundamentalMat**, please change ransacReprojThreshold argument (Default = 1)
+   - If you want to get more robust result, then change **'0.1'** or etc. 
 
 ## 6. Results 
    <table>
