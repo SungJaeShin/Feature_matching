@@ -159,8 +159,17 @@ This variables are not requirement, but the following variables are also conside
    </table>
 
 ## 7. Best Results
-   - ORB + DAISY + FM (inliers 57)
-      <img src="./results/3_final_orb_daisy_result.png"/>
+   - ORB + SURF + BF + KNN + FM (ransacReprojThreshold = 1)  
+      <img src="./results/reprojection/3_final_orb_surf_bf_knn_result_1.png"/>
+      
+   - ORB + DAISY + BF + KNN + FM (ransacReprojThreshold = 1)  
+      <img src="./results/reprojection/3_final_orb_daisy_bf_knn_result_1.png"/>
+
+   - ORB + SURF + BF + KNN + FM (ransacReprojThreshold = 0.1)  
+      <img src="./results/reprojection/3_final_orb_surf_bf_knn_result_01.png"/>
+      
+   - ORB + DAISY + BF + KNN + FM (ransacReprojThreshold = 0.1)  
+      <img src="./results/reprojection/3_final_orb_daisy_bf_knn_result_01.png"/>
 
 ## 8. Reference
 
