@@ -96,7 +96,7 @@ int main()
         // match(InputArray queryDescriptors, InputArray trainDescriptors, std::vector<cv::DMatch> &matches, InputArray mask=noArray())
         std::vector<cv::DMatch> matches;
         matcher -> match(query_des, cand_des, matches);
-        std::cout << "[FIRST] # FLANN Matches: " << matches.size() << std::endl;
+        std::cout << "[FIRST] # of Matches: " << matches.size() << std::endl;
 
         // Convert Point2f 
         for(int i = 0; i < matches.size(); i ++)
@@ -115,7 +115,7 @@ int main()
         // knnMatch(InputArray queryDescriptors, InputArray trainDescriptors, std::vector<std::vector<cv::DMatch>> &matches, int k, InputArray mask=noArray(), bool compactResult=false)
         std::vector<std::vector<cv::DMatch>> matches;
         matcher -> knnMatch(query_des, cand_des, matches, 2);
-        std::cout << "[FIRST] # FLANN Matches: " << matches.size() << std::endl;
+        std::cout << "[FIRST] # of Matches: " << matches.size() << std::endl;
 
         // Convert Point2f and Get good match points using ratio test
         for(int i = 0; i < matches.size(); i ++)
@@ -138,7 +138,7 @@ int main()
         // [Preference radius] 0.4 => 405 matches / 0.3 => 183 matches / 0.2 => 117 matches
         std::vector<std::vector<cv::DMatch>> matches;
         matcher -> radiusMatch(query_des, cand_des, matches, 0.3);
-        std::cout << "[FIRST] # FLANN Matches: " << matches.size() << std::endl;
+        std::cout << "[FIRST] # of Matches: " << matches.size() << std::endl;
         
         // Convert Point2f 
         for(int i = 0; i < matches.size(); i ++)
@@ -167,7 +167,7 @@ int main()
     auto matching_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> matching_duration = matching_end - matching_start;
 
-    std::cout << "[SECOND] # Filter FLANN Matches: " << good_matches.size() << std::endl;
+    std::cout << "[SECOND] # of Matches after filtering: " << good_matches.size() << std::endl;
 
     /* ----- If you want to first matching results, please erase annotated this code !!! ----- */ 
     // // Draw Good Matches (First Good Points) 
@@ -185,7 +185,7 @@ int main()
     auto outlier_rejection_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> outlier_rejection_duration = outlier_rejection_end - outlier_rejection_start;
 
-    std::cout << "[FINAL] # Final inlier FLANN Matches: " << count << std::endl;
+    std::cout << "[FINAL] # of Final inlier Matches: " << count << std::endl;
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Time Consumption Results 
