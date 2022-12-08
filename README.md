@@ -94,6 +94,17 @@ This variables are not requirement, but the following variables are also conside
    - If you want to get more robust result, then change **'0.1'** or etc. 
 
 ## 6. Results 
+- Results of Inlier Number and Time Consumption
+   - ORB Result
+      <img src="./results/table/ORB_Result.png"/>
+   
+   - GFTT Result
+      <img src="./results/table/GFTT_Result.png"/>
+   
+   - SIFT Result
+      <img src="./results/table/SIFT_Result.png"/>
+
+- Matching Results Set
    <table>
       <tr>
          <td> ORB + AKAZE + FM (inliers 22)</td>
