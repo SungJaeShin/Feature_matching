@@ -1,6 +1,7 @@
 #include "extractor.h"
 #include "descriptor.h"
 #include "plot.h"
+#include "rejection.h"
 
 int main()
 {
@@ -17,6 +18,7 @@ int main()
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Extract Method
+    auto extract_start = std::chrono::high_resolution_clock::now();
     if(EXTRACT_MODE == 1)
     {
         orb(query, query_kpt);
@@ -42,9 +44,13 @@ int main()
         gftt(query, query_kpt);
         sift(cand, cand_kpt);
     }
-    
+
+    auto extract_end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> extract_duration = extract_end - extract_start;
+
     /* ---------------------------------------------------------------------------------------- */ 
     // Descriptor Method
+    auto descriptor_start = std::chrono::high_resolution_clock::now();
     if(DESCRIPTOR_MODE == 1)
         akaze(query, cand, query_kpt, cand_kpt, query_des, cand_des);
     else if(DESCRIPTOR_MODE == 2)
@@ -52,35 +58,116 @@ int main()
     else if(DESCRIPTOR_MODE == 3)
         daisy(query, cand, query_kpt, cand_kpt, query_des, cand_des);
 
+    auto descriptor_end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> descriptor_duration = descriptor_end - descriptor_start;
+
     /* ---------------------------------------------------------------------------------------- */ 
     // See Feature Points
     drawimage(query, cand, query_kpt, cand_kpt);
 
     /* ---------------------------------------------------------------------------------------- */ 
-    // Get Good Points    
-    cv::FlannBasedMatcher matcher;
-    std::vector<std::vector<cv::DMatch>> matches;
-    matcher.knnMatch(query_des, cand_des, matches, 2);
-    std::cout << "[FIRST] # FLANN Matches: " << matches.size() << std::endl;
+    // Matcher Method      
+    cv::Ptr<cv::DescriptorMatcher> matcher;
+    if(MATCHER_MODE == 1)
+    {
+        // ***[IMPORTANT]*** When you use BFMatcher, please change in create arguments
+        // [CASE 1] SIFT, SURF => cv::NORM_L1 & cv::NORM_L2  
+        // [CASE 2] ORB => cv::NORM_HAMMING
+        // The last argument of create function is boolean that meaning of crosscheck (True value means double check that add opposite direction) 
+        cv::Ptr<cv::BFMatcher> bf_matcher = cv::BFMatcher::create(cv::NORM_L2, false);
+        matcher = bf_matcher;
+    }
+    else if(MATCHER_MODE == 2)
+    {
+        cv::Ptr<cv::FlannBasedMatcher> flann_matcher = cv::FlannBasedMatcher::create();
+        matcher = flann_matcher;
+    }
 
-    // Convert Point2f and Get good match points
+    /* ---------------------------------------------------------------------------------------- */ 
+    // Matching Method
+    // [-] Reference Site: https://bkshin.tistory.com/entry/OpenCV-28-%ED%8A%B9%EC%A7%95-%EB%A7%A4%EC%B9%ADFeature-Matching
+    auto matching_start = std::chrono::high_resolution_clock::now();
     double threshold = 0.95f;
     std::vector<cv::KeyPoint> good_query_kpt, good_cand_kpt; 
 	std::vector<cv::DMatch> good_matches;
-    for(int i = 0; i < matches.size(); i ++)
+ 
+    if(MATCHING_MODE == 1)
     {
-        if(matches[i][0].distance < threshold * matches[i][1].distance)
+        // match(InputArray queryDescriptors, InputArray trainDescriptors, std::vector<cv::DMatch> &matches, InputArray mask=noArray())
+        std::vector<cv::DMatch> matches;
+        matcher -> match(query_des, cand_des, matches);
+        std::cout << "[FIRST] # FLANN Matches: " << matches.size() << std::endl;
+
+        // Convert Point2f 
+        for(int i = 0; i < matches.size(); i ++)
         {
-            int query_idx = matches[i][0].queryIdx;
-            int cand_idx = matches[i][0].trainIdx;
+            int query_idx = matches[i].queryIdx;
+            int cand_idx = matches[i].trainIdx;
             query_2d.push_back(query_kpt[query_idx].pt);
             cand_2d.push_back(cand_kpt[cand_idx].pt);
             good_query_kpt.push_back(query_kpt[query_idx]);
             good_cand_kpt.push_back(cand_kpt[cand_idx]);
-            good_matches.push_back(matches[i][0]);
+            good_matches.push_back(matches[i]);
         }
     }
-    std::cout << "[SECOND] # Good FLANN Matches: " << good_matches.size() << std::endl;
+    else if(MATCHING_MODE == 2)
+    {
+        // knnMatch(InputArray queryDescriptors, InputArray trainDescriptors, std::vector<std::vector<cv::DMatch>> &matches, int k, InputArray mask=noArray(), bool compactResult=false)
+        std::vector<std::vector<cv::DMatch>> matches;
+        matcher -> knnMatch(query_des, cand_des, matches, 2);
+        std::cout << "[FIRST] # FLANN Matches: " << matches.size() << std::endl;
+
+        // Convert Point2f and Get good match points using ratio test
+        for(int i = 0; i < matches.size(); i ++)
+        {
+            if(matches[i][0].distance < threshold * matches[i][1].distance)
+            {
+                int query_idx = matches[i][0].queryIdx;
+                int cand_idx = matches[i][0].trainIdx;
+                query_2d.push_back(query_kpt[query_idx].pt);
+                cand_2d.push_back(cand_kpt[cand_idx].pt);
+                good_query_kpt.push_back(query_kpt[query_idx]);
+                good_cand_kpt.push_back(cand_kpt[cand_idx]);
+                good_matches.push_back(matches[i][0]);
+            }
+        }
+    }
+    else if(MATCHING_MODE == 3)
+    {
+        // radiusMatch (InputArray queryDescriptors, InputArray trainDescriptors, std::vector<std::vector<cv::DMatch>> &matches, float maxDistance, InputArray mask=noArray(), bool compactResult=false) 
+        // [Preference radius] 0.4 => 405 matches / 0.3 => 183 matches / 0.2 => 117 matches
+        std::vector<std::vector<cv::DMatch>> matches;
+        matcher -> radiusMatch(query_des, cand_des, matches, 0.3);
+        std::cout << "[FIRST] # FLANN Matches: " << matches.size() << std::endl;
+        
+        // Convert Point2f 
+        for(int i = 0; i < matches.size(); i ++)
+        {            
+            int min_idx = 0;
+            int min_dist = matches[i][0].distance;
+            
+            for(int j = 0; j < matches[i].size(); j++)
+            {
+                if(min_dist > matches[i][j].distance)
+                {
+                    min_dist = matches[i][j].distance;
+                    min_idx = j;
+                }
+            }
+
+            int query_idx = matches[i][min_idx].queryIdx;
+            int cand_idx = matches[i][min_idx].trainIdx;
+            query_2d.push_back(query_kpt[query_idx].pt);
+            cand_2d.push_back(cand_kpt[cand_idx].pt);
+            good_query_kpt.push_back(query_kpt[query_idx]);
+            good_cand_kpt.push_back(cand_kpt[cand_idx]);
+            good_matches.push_back(matches[i][min_idx]);
+        }
+    }
+    auto matching_end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> matching_duration = matching_end - matching_start;
+
+    std::cout << "[SECOND] # Filter FLANN Matches: " << good_matches.size() << std::endl;
 
     /* ----- If you want to first matching results, please erase annotated this code !!! ----- */ 
     // // Draw Good Matches (First Good Points) 
@@ -88,33 +175,24 @@ int main()
     // drawmatches(query, cand, query_kpt, cand_kpt, good_matches, save_good);
 
     /* ---------------------------------------------------------------------------------------- */ 
-    // Remove Outlier Points (Get Final Points)
-    /* cv::findFundmentalMatrix(InputArray points1, InputArray points2, int method, double ransacReprojThreshold, double confidence, int maxIters, OutputArray mask = noArray())*/
-    cv::Mat F;
-    std::vector<uchar> status;
+    // Outlier Rejection (Get Final Points)
+    auto outlier_rejection_start = std::chrono::high_resolution_clock::now();
     std::vector<cv::KeyPoint> final_query_kpt, final_cand_kpt; 
 	std::vector<cv::DMatch> final_matches;
     int count = 0;
-    F = cv::findFundamentalMat(query_2d, cand_2d, cv::FM_RANSAC, 3.0, 0.99, status);
-    // std::cout << "Fundmental Matrix: " << F << std::endl;
-    // std::cout << "status size: " << status.size() << std::endl;
 
-    for(int i = 0; i < query_2d.size(); i++)
-    {
-        cv::Mat query_2pt = (cv::Mat_<double>(3, 1) << query_2d[i].x, query_2d[i].y, 1);
-        cv::Mat cand_2pt = (cv::Mat_<double>(1, 3) << cand_2d[i].x, cand_2d[i].y, 1);
-        if(status[i] > 0)
-        {
-            // std::cout << "[inlier] x'Fx = " << cand_2pt * F * query_2pt << std::endl;
-            final_query_kpt.push_back(good_query_kpt[i]);
-            final_cand_kpt.push_back(good_cand_kpt[i]);
-            final_matches.push_back(good_matches[i]);
-            count++;
-        }
-        // else
-        //     std::cout << "[outlier] x'Fx = " << cand_2pt * F * query_2pt << std::endl;
-    }
+    rejectionUsingFundamentalMat(count, query_2d, cand_2d, good_query_kpt, good_cand_kpt, good_matches, final_query_kpt, final_cand_kpt, final_matches);
+    auto outlier_rejection_end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> outlier_rejection_duration = outlier_rejection_end - outlier_rejection_start;
+
     std::cout << "[FINAL] # Final inlier FLANN Matches: " << count << std::endl;
+
+    /* ---------------------------------------------------------------------------------------- */ 
+    // Time Consumption Results 
+    std::cout << "Extraction Time: " << extract_duration.count() << " ms" << std::endl;
+    std::cout << "Descriptor Time: " << descriptor_duration.count() << " ms" << std::endl;
+    std::cout << "Matching Time: " << matching_duration.count() << " ms" << std::endl;
+    std::cout << "Outlier Rejection Time: " << outlier_rejection_duration.count() << " ms" << std::endl;
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Draw Final Matches (Final Points) 

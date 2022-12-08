@@ -9,12 +9,19 @@
 #include "opencv2/xfeatures2d.hpp"
 #include "opencv2/xfeatures2d/nonfree.hpp"
 #include "opencv2/calib3d/calib3d.hpp"
+#include <chrono>
 
-// image index range: 1 ~ 21
+// image index range; 1 ~ 21
 #define IMAGE_NUM 3
 
+// matcher method; [1] BF matcher [2] FLANN matcher 
+#define MATCHER_MODE 1
+
+// matching method; [1] vanilla match [2] knn match [3] radius match
+#define MATCHING_MODE 2
+
 // extract mode; [1] ORB [2] GFTT [3] SIFT [4] GFTT + ORB [5] GFTT + SIFT 
-#define EXTRACT_MODE 5
+#define EXTRACT_MODE 1
 
 // descriptor mode; [1] AKAZE [2] SURF [3] DAISY
 #define DESCRIPTOR_MODE 3
