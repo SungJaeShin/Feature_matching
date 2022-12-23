@@ -1,5 +1,9 @@
 #include "include.h"
 
+// Vector Field Consensus Filter Method 
+#include "VFC/vfc.h"
+#include "VFC/vfc.cpp"
+
 void rejectionUsingFundamentalMat(int &inliers, std::vector<cv::Point2f> query_2d, std::vector<cv::Point2f> cand_2d, 
                                   std::vector<cv::KeyPoint> good_query_kpt, std::vector<cv::KeyPoint> good_cand_kpt, std::vector<cv::DMatch> good_matches,
                                   std::vector<cv::KeyPoint> &final_query_kpt, std::vector<cv::KeyPoint> &final_cand_kpt, std::vector<cv::DMatch> &final_matches)
@@ -25,5 +29,27 @@ void rejectionUsingFundamentalMat(int &inliers, std::vector<cv::Point2f> query_2
         }
         // else
         //     std::cout << "[outlier] x'Fx = " << cand_2pt * F * query_2pt << std::endl;
+    }
+}
+
+void rejectionUsingVectorFieldConsensus(int &inliers, std::vector<cv::Point2f> query_2d, std::vector<cv::Point2f> cand_2d, 
+                                        std::vector<cv::KeyPoint> good_query_kpt, std::vector<cv::KeyPoint> good_cand_kpt, std::vector<cv::DMatch> good_matches,
+                                        std::vector<cv::KeyPoint> &final_query_kpt, std::vector<cv::KeyPoint> &final_cand_kpt, std::vector<cv::DMatch> &final_matches)
+{
+    // [-] Reference Site: https://github.com/mpkuse/robust_feature_matching.git
+    // [-] Reference Paper: Robust Point Matching via Vector Field Consensus
+
+    VFC vfc;
+    vfc.setData(query_2d, cand_2d);
+    vfc.optimize();
+    std::vector<int> matchIdx = vfc.obtainCorrectMatch();
+
+    for(int i = 0; i < matchIdx.size(); i++)
+    {
+        int match_index = matchIdx[i];
+        final_query_kpt.push_back(good_query_kpt[match_index]);
+        final_cand_kpt.push_back(good_cand_kpt[match_index]);
+        final_matches.push_back(good_matches[match_index]);
+        inliers++;
     }
 }

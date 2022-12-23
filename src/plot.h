@@ -47,6 +47,11 @@ void drawmatches(cv::Mat image1, cv::Mat image2, std::vector<cv::KeyPoint> img1_
     else if(MATCHING_MODE == 3)
         method = method + "_radius";
 
-    std::string save_path = "~/feature_matching/image/" + std::to_string(IMAGE_NUM) + "_" + method + "_result.png";
+    if(REJECTION_MODE == 1)
+        method = method + "_fm";
+    else if(REJECTION_MODE == 2)
+        method = method + "_vfc";
+
+    std::string save_path = "/home/sj/workspace/paper_ws/icra2023/src/feature_matching/image/" + std::to_string(IMAGE_NUM) + "_" + method + "_result.png";
     cv::imwrite(save_path, outImg);
 }

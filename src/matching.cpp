@@ -5,8 +5,8 @@
 
 int main()
 {
-    std::string query_path = "~/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_query.png";
-    std::string cand_path = "~/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_cand.png";
+    std::string query_path = "/home/sj/workspace/paper_ws/icra2023/src/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_query.png";
+    std::string cand_path = "/home/sj/workspace/paper_ws/icra2023/src/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_cand.png";
     cv::Mat query = cv::imread(query_path);
     cv::Mat cand = cv::imread(cand_path);
 
@@ -181,7 +181,11 @@ int main()
 	std::vector<cv::DMatch> final_matches;
     int count = 0;
 
-    rejectionUsingFundamentalMat(count, query_2d, cand_2d, good_query_kpt, good_cand_kpt, good_matches, final_query_kpt, final_cand_kpt, final_matches);
+    if(REJECTION_MODE == 1)
+        rejectionUsingFundamentalMat(count, query_2d, cand_2d, good_query_kpt, good_cand_kpt, good_matches, final_query_kpt, final_cand_kpt, final_matches);
+    else if(REJECTION_MODE == 2)
+        rejectionUsingVectorFieldConsensus(count, query_2d, cand_2d, good_query_kpt, good_cand_kpt, good_matches, final_query_kpt, final_cand_kpt, final_matches);
+
     auto outlier_rejection_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> outlier_rejection_duration = outlier_rejection_end - outlier_rejection_start;
 
