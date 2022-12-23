@@ -41,6 +41,7 @@
   
    - Outlier Rejection Method
       - [1] findFundamentalMatrix (FM)
+      - [2] vector field consensus (VFC)
 
 ## 3. Build and Run 
 Clone the repository and build and run simultaneously:
@@ -74,6 +75,10 @@ Clone the repository and build and run simultaneously:
    - 1 &rarr; apply vanilla match
    - 2 &rarr; apply knn match
    - 3 &rarr; apply radius match
+   
+- **REJECTION_MODE** (include.h):
+   - 1 &rarr; apply fundamentalMatrix 
+   - 2 &rarr; apply VFC 
 
 - **MIN_DIS** (include.h): Put value to change feature's Euclidean distance when using GoodFeaturesToTrack extractor
 
@@ -171,6 +176,12 @@ This variables are not requirement, but the following variables are also conside
       
    - ORB + DAISY + BF + KNN + FM (ransacReprojThreshold = 0.1)  
       <img src="./results/reprojection/3_final_orb_daisy_bf_knn_result_01.png"/>
+      
+   - ORB + SURF + BF + KNN + VFC 
+      <img src="./results/vfc/3_final_orb_surf_bf_knn_vfc_result.png"/>
+
+   - ORB + DAISY + BF + KNN + VFC 
+      <img src="./results/vfc/3_final_orb_daisy_bf_knn_vfc_result.png"/>
 
 ## 8. Reference
 [1] Jianbo Shi and Carlo Tomasi. Good features to track. In Computer Vision and Pattern Recognition, 1994. Proceedings CVPR'94., 1994 IEEE Computer Society Conference on, pages 593–600. IEEE, 1994. \
@@ -188,9 +199,12 @@ This variables are not requirement, but the following variables are also conside
 [13] https://docs.opencv.org/3.4/db/d95/classcv_1_1ORB.html#adc371099dc902a9674bd98936e79739c \
 [14] https://bkshin.tistory.com/entry/OpenCV-27-%ED%8A%B9%EC%A7%95-%EB%94%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%84%B0-%EA%B2%80%EC%B6%9C%EA%B8%B0-SIFT-SURF-ORB \
 [15] https://docs.opencv.org/3.4/d7/d60/classcv_1_1SIFT.html \
-[16] https://leechamin.tistory.com/330
+[16] https://leechamin.tistory.com/330 \ 
+[17] https://github.com/mpkuse/robust_feature_matching
 
-## 9. Future Works
+## 9. Acknowledgement
+Thanks for Yeeun Kim help to get robust feature matching method !! 
+
+## 10. Future Works
    - Apply SuperPoint & SuperGlue
    - Apply GCBB (Linear time vehicle relocation in SLAM paper)
-   - Apply VFC outlier rejection (Robust Point Matching via Vector Field Consensus)
