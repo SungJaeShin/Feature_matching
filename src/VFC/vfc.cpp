@@ -11,7 +11,7 @@
 // [2] Jiayi Ma, Ji Zhao, Jinwen Tian, Xiang Bai, and Zhuowen Tu.
 //     Regularized Vector Field Learning with Sparse Approximation for Mismatch Removal,
 //     Pattern Recognition, 46(12), pp. 3519-3532, 2013
-
+ 
 VFC::VFC() {
 	_lX.clear();
 	_rX.clear();
