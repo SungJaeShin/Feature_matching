@@ -41,7 +41,7 @@
   
    - Outlier Rejection Method
       - [1] findFundamentalMatrix (FM)
-      - [2] vector field consensus (VFC)
+      - [2] vector field consensus ([VFC](https://github.com/mpkuse/robust_feature_matching))
 
 ## 3. Build and Run 
 Clone the repository and build and run simultaneously:
