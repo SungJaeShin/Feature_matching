@@ -24,11 +24,13 @@
       - [1] ORB 
       - [2] goodFeaturesToTrack 
       - [3] SIFT
+      - [4] [SuperPoint](https://github.com/ChanWoo25/SuperPoint2CPP)
       
    - Feature Descriptor Method
       - [1] AKAZE
       - [2] SURF 
       - [3] DAISY
+      - [4] [SuperPoint](https://github.com/ChanWoo25/SuperPoint2CPP)
 
    - Macher Method 
       - [1] Bruth-Force Matcher (BF)
@@ -55,20 +57,24 @@ Clone the repository and build and run simultaneously:
 ## 4. Changing Parameters
 - **IMAGE_NUM** (include.h): Put value to test image pair  
 
+- **USE_GPU** (include.h): Put true or false flag to use GPU resource 
+
 - **EXTRACT_MODE** (include.h):
    - 1 &rarr; apply ORB
    - 2 &rarr; apply GFTT (GoodFeaturesToTrack)
    - 3 &rarr; apply SIFT
    - 4 &rarr; apply GFTT(Query) + ORB(Candidate) 
    - 5 &rarr; apply GFTT(Query) + SIFT(Candidate)
+   - 6 &rarr; apply SuperPoint
 
 - **DESCRIPTOR_MODE** (include.h): 
    - 1 &rarr; apply AKAZE
    - 2 &rarr; apply SURF
    - 3 &rarr; apply DAISY
+   - 4 &rarr; apply SuperPoint
 
 - **MATCHER_MODE** (include.h):
-   - 1 &rarr; apply BF Matcher (Bruth-Force)
+   - 1 &rarr; apply BF Matcher (Brute-Force)
    - 2 &rarr; apply FLANN Matcher (Fast Library for Approximate Nearest Neighbors)
 
 - **MATCHING_MODE** (include.h):
@@ -190,17 +196,21 @@ This variables are not requirement, but the following variables are also conside
 [4] Ethan Rublee, Vincent Rabaud, Kurt Konolige, Gary R. Bradski: ORB: An efficient alternative to SIFT or SURF. ICCV 2011: 2564-2571. \
 [5] Pablo Fernández Alcantarilla, Jesús Nuevo, and Adrien Bartoli. Fast explicit diffusion for accelerated features in nonlinear scale spaces. BMVC, pages 13.1–13.11, 2013.\
 [6] E. Tola, V. Lepetit, and P. Fua. Daisy: An efficient dense descriptor applied to wide baseline stereo. IEEE Transactions on Pattern Analysis and Machine Intelligence, 32(5):815–830, May 2010. \
-[7] https://bkshin.tistory.com/entry/OpenCV-28-%ED%8A%B9%EC%A7%95-%EB%A7%A4%EC%B9%ADFeature-Matching \
-[8] https://stackoverflow.com/questions/18744051/what-the-hessian-minimum-threshold-means-on-the-surffeaturedetector-function \
-[9] https://www.researchgate.net/figure/Relation-between-hessian-threshold-value-and-Accuracy-of-SURF-detector-As-shown-in_fig2_309363445 \
-[10] https://docs.opencv.org/3.4/d9/d37/classcv_1_1xfeatures2d_1_1DAISY.html \
-[11] https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=pckbj123&logNo=100203116086 \
-[12] https://076923.github.io/posts/Python-opencv-38/ \
-[13] https://docs.opencv.org/3.4/db/d95/classcv_1_1ORB.html#adc371099dc902a9674bd98936e79739c \
-[14] https://bkshin.tistory.com/entry/OpenCV-27-%ED%8A%B9%EC%A7%95-%EB%94%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%84%B0-%EA%B2%80%EC%B6%9C%EA%B8%B0-SIFT-SURF-ORB \
-[15] https://docs.opencv.org/3.4/d7/d60/classcv_1_1SIFT.html \
-[16] https://leechamin.tistory.com/330 \
-[17] https://github.com/mpkuse/robust_feature_matching
+[7] Jiayi Ma, Ji Zhao, Jinwen Tian, Alan Yuille, and Zhuowen Tu. Robust Point Matching via Vector Field Consensus, IEEE Transactions on Image Processing, 23(4), pp. 1706-1721, 2014 \
+[8] Jiayi Ma, Ji Zhao, Jinwen Tian, Xiang Bai, and Zhuowen Tu. Regularized Vector Field Learning with Sparse Approximation for Mismatch Removal, Pattern Recognition, 46(12), pp. 3519-3532, 2013
+[9] DeTone, Daniel & Malisiewicz, Tomasz & Rabinovich, Andrew. SuperPoint: Self-Supervised Interest Point Detection and Description. CVPR Deep Learning for Visual SLAM Workshop (CVPR), 2018 \
+[10] https://bkshin.tistory.com/entry/OpenCV-28-%ED%8A%B9%EC%A7%95-%EB%A7%A4%EC%B9%ADFeature-Matching \
+[11] https://stackoverflow.com/questions/18744051/what-the-hessian-minimum-threshold-means-on-the-surffeaturedetector-function \
+[12] https://www.researchgate.net/figure/Relation-between-hessian-threshold-value-and-Accuracy-of-SURF-detector-As-shown-in_fig2_309363445 \
+[13] https://docs.opencv.org/3.4/d9/d37/classcv_1_1xfeatures2d_1_1DAISY.html \
+[14] https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=pckbj123&logNo=100203116086 \
+[15] https://076923.github.io/posts/Python-opencv-38/ \
+[16] https://docs.opencv.org/3.4/db/d95/classcv_1_1ORB.html#adc371099dc902a9674bd98936e79739c \
+[17] https://bkshin.tistory.com/entry/OpenCV-27-%ED%8A%B9%EC%A7%95-%EB%94%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%84%B0-%EA%B2%80%EC%B6%9C%EA%B8%B0-SIFT-SURF-ORB \
+[18] https://docs.opencv.org/3.4/d7/d60/classcv_1_1SIFT.html \
+[19] https://leechamin.tistory.com/330 \
+[20] https://github.com/mpkuse/robust_feature_matching \
+[21] https://github.com/ChanWoo25/SuperPoint2CPP
 
 ## 9. Acknowledgement
 Thanks for Yeeun Kim help to get robust feature matching method !! 
