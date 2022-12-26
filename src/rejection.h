@@ -1,6 +1,6 @@
 #include "include.h"
 
-// Vector Field Consensus Filter Method 
+// For Vector Field Consensus Filter Method 
 #include "VFC/vfc.h"
 #include "VFC/vfc.cpp"
 

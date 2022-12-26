@@ -1,5 +1,11 @@
 #include "include.h"
 
+// For SuperPoint Method
+#include "SuperPoint/SPDetector.cpp"
+#include "SuperPoint/SPDetector.hpp"
+#include "SuperPoint/SuperPoint.cpp"
+#include "SuperPoint/SuperPoint.cpp"
+
 void gftt(cv::Mat image, std::vector<cv::KeyPoint> &img_kpt)
 {
     // Feature Extractor
@@ -63,4 +69,12 @@ void sift(cv::Mat image, std::vector<cv::KeyPoint> &img_kpt)
     */
     cv::Ptr<cv::xfeatures2d::SIFT> sift = cv::xfeatures2d::SIFT::create(500);
     sift -> detect(image, img_kpt);
+}
+
+void superpoint(SPDetector model, cv::Mat image, std::vector<cv::KeyPoint> &img_kpt, cv::Mat &img_des)
+{
+    // SuperPoint can compute image keypoints and descriptor simultaneously !!
+    /* void SPDetector::detect(cv::InputArray _image, std::vector<cv::KeyPoint>& _keypoints, cv::Mat &_descriptors)
+       [-] Reference Site: https://github.com/ChanWoo25/SuperPoint2CPP/blob/master/src/SPDetector.cpp */
+    model.detect(image, img_kpt, img_des);
 }

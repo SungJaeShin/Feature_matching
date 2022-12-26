@@ -5,8 +5,8 @@
 
 int main()
 {
-    std::string query_path = "/home/sj/workspace/paper_ws/icra2023/src/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_query.png";
-    std::string cand_path = "/home/sj/workspace/paper_ws/icra2023/src/feature_matching/image/test_pair/" + std::to_string(IMAGE_NUM) + "_cand.png";
+    std::string query_path = "../image/test_pair/" + std::to_string(IMAGE_NUM) + "_query.png";
+    std::string cand_path = "../image/test_pair/" + std::to_string(IMAGE_NUM) + "_cand.png";
     cv::Mat query = cv::imread(query_path);
     cv::Mat cand = cv::imread(cand_path);
 
@@ -17,32 +17,48 @@ int main()
     cv::Mat query_des, cand_des;
 
     /* ---------------------------------------------------------------------------------------- */ 
+    // Get pre-trained model for using SuperPoint and SuperGlue
+    auto get_pretrain_model_start = std::chrono::high_resolution_clock::now();
+
+    std::string superpoint_model_weight_path = "../models/superpoint.pt";
+    if(USE_GPU && EXTRACT_MODE == 6)
+        SPDetector SP(superpoint_model_weight_path, torch::cuda::is_available());
+
+    auto get_pretrain_model_end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> get_pretrain_model_duration = get_pretrain_model_end - get_pretrain_model_start;
+
+    /* ---------------------------------------------------------------------------------------- */ 
     // Extract Method
     auto extract_start = std::chrono::high_resolution_clock::now();
-    if(EXTRACT_MODE == 1)
+    if(!USE_GPU && EXTRACT_MODE == 1)
     {
         orb(query, query_kpt);
         orb(cand, cand_kpt);
     }
-    else if(EXTRACT_MODE == 2)
+    else if(!USE_GPU && EXTRACT_MODE == 2)
     {
         gftt(query, query_kpt);
         gftt(cand, cand_kpt);
     }
-    else if(EXTRACT_MODE == 3)
+    else if(!USE_GPU && EXTRACT_MODE == 3)
     {
         sift(query, query_kpt);
         sift(cand, cand_kpt);
     }
-    else if(EXTRACT_MODE == 4)
+    else if(!USE_GPU && EXTRACT_MODE == 4)
     {
         gftt(query, query_kpt);
         orb(cand, cand_kpt);
     }
-    else if(EXTRACT_MODE == 5)
+    else if(!USE_GPU && EXTRACT_MODE == 5)
     {
         gftt(query, query_kpt);
         sift(cand, cand_kpt);
+    }
+    else if(USE_GPU && EXTRACT_MODE == 6)
+    {
+        superpoint(SP, query, query_kpt, query_des);
+        superpoint(SP, cand, cand_kpt, cand_des);
     }
 
     auto extract_end = std::chrono::high_resolution_clock::now();
@@ -57,6 +73,8 @@ int main()
         surf(query, cand, query_kpt, cand_kpt, query_des, cand_des);
     else if(DESCRIPTOR_MODE == 3)
         daisy(query, cand, query_kpt, cand_kpt, query_des, cand_des);
+    else if(DESCRIPTOR_MODE == 4)
+        NULL;
 
     auto descriptor_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> descriptor_duration = descriptor_end - descriptor_start;
@@ -193,6 +211,7 @@ int main()
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Time Consumption Results 
+    std::cout << "Get Pre-trained Mode Time: " << get_pretrain_model_duration.count() << " ms" << std::endl;
     std::cout << "Extraction Time: " << extract_duration.count() << " ms" << std::endl;
     std::cout << "Descriptor Time: " << descriptor_duration.count() << " ms" << std::endl;
     std::cout << "Matching Time: " << matching_duration.count() << " ms" << std::endl;

@@ -12,12 +12,19 @@
 #include <chrono>
 
 // image index range; 1 ~ 23
-#define IMAGE_NUM 23
+#define IMAGE_NUM 3
 
-// extract mode; [1] ORB [2] GFTT [3] SIFT [4] GFTT + ORB [5] GFTT + SIFT 
+// flag for using GPU applied SuperPoint & SuperGlue Method 
+/* GPU mode; [true] Use GPU (using learning method) 
+             [false] Use CPU (using traditional method) */
+#define USE_GPU false
+
+// extract mode; [1] ORB [2] GFTT [3] SIFT [4] GFTT + ORB [5] GFTT + SIFT [6] SuperPoint
+// [**IMPORTANT**] if you want to use SuperPoint, then please to change flag USE_GPU to "true" !! 
 #define EXTRACT_MODE 1
 
-// descriptor mode; [1] AKAZE [2] SURF [3] DAISY
+// descriptor mode; [1] AKAZE [2] SURF [3] DAISY [4] SuperPoint
+// [**IMPORTANT**] if you want to use SuperPoint's Descriptor, then please to change flag USE_GPU to "true" !! 
 #define DESCRIPTOR_MODE 2
 
 // matcher method; [1] BF matcher [2] FLANN matcher 
