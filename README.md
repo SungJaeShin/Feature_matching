@@ -197,7 +197,7 @@ This variables are not requirement, but the following variables are also conside
 [5] Pablo Fernández Alcantarilla, Jesús Nuevo, and Adrien Bartoli. Fast explicit diffusion for accelerated features in nonlinear scale spaces. BMVC, pages 13.1–13.11, 2013.\
 [6] E. Tola, V. Lepetit, and P. Fua. Daisy: An efficient dense descriptor applied to wide baseline stereo. IEEE Transactions on Pattern Analysis and Machine Intelligence, 32(5):815–830, May 2010. \
 [7] Jiayi Ma, Ji Zhao, Jinwen Tian, Alan Yuille, and Zhuowen Tu. Robust Point Matching via Vector Field Consensus, IEEE Transactions on Image Processing, 23(4), pp. 1706-1721, 2014 \
-[8] Jiayi Ma, Ji Zhao, Jinwen Tian, Xiang Bai, and Zhuowen Tu. Regularized Vector Field Learning with Sparse Approximation for Mismatch Removal, Pattern Recognition, 46(12), pp. 3519-3532, 2013
+[8] Jiayi Ma, Ji Zhao, Jinwen Tian, Xiang Bai, and Zhuowen Tu. Regularized Vector Field Learning with Sparse Approximation for Mismatch Removal, Pattern Recognition, 46(12), pp. 3519-3532, 2013 \
 [9] DeTone, Daniel & Malisiewicz, Tomasz & Rabinovich, Andrew. SuperPoint: Self-Supervised Interest Point Detection and Description. CVPR Deep Learning for Visual SLAM Workshop (CVPR), 2018 \
 [10] https://bkshin.tistory.com/entry/OpenCV-28-%ED%8A%B9%EC%A7%95-%EB%A7%A4%EC%B9%ADFeature-Matching \
 [11] https://stackoverflow.com/questions/18744051/what-the-hessian-minimum-threshold-means-on-the-surffeaturedetector-function \
