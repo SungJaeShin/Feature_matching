@@ -202,10 +202,10 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
       - Ref Site: https://github.com/deepshwang/howtodocker
    
    - [4] Error Related
-      (1) docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]]. \
+      - (1) docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].
          - Ref Site: https://bluecolorsky.tistory.com/110
       
-      (2) nvidia-container-cli: initialization error: load library failed: libnvidia-ml.so.1 \
+      - (2) nvidia-container-cli: initialization error: load library failed: libnvidia-ml.so.1
          - Ref Site: https://my-grope-log.tistory.com/20
 
 ## 9. Reference
