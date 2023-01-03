@@ -189,7 +189,19 @@ This variables are not requirement, but the following variables are also conside
    - ORB + DAISY + BF + KNN + VFC 
       <img src="./results/vfc/3_final_orb_daisy_bf_knn_vfc_result.png"/>
 
-## 8. Reference
+## 8. Support Docker
+Test on Ubuntu 18.04 equipped with P2000 NoteBook 
+
+   - [1] Install Docker
+      - Ref Site: https://docs.docker.com/engine/install/ubuntu/
+      
+   - [2] Get Appropriate Docker Images
+      - Ref Site: https://hub.docker.com/
+      
+   - [3] Other Docker properties to communicate host machine
+      - Ref Site: https://github.com/deepshwang/howtodocker
+
+## 9. Reference
 [1] Jianbo Shi and Carlo Tomasi. Good features to track. In Computer Vision and Pattern Recognition, 1994. Proceedings CVPR'94., 1994 IEEE Computer Society Conference on, pages 593–600. IEEE, 1994. \
 [2] David G. Lowe. Distinctive image features from scale-invariant keypoints. Int. J. Comput. Vision, 60(2):91–110, November 2004. \
 [3] Herbert Bay, Tinne Tuytelaars, and Luc Van Gool. Surf: Speeded up robust features. Computer Vision–ECCV 2006, pages 404–417, 2006. \
@@ -212,9 +224,9 @@ This variables are not requirement, but the following variables are also conside
 [20] https://github.com/mpkuse/robust_feature_matching \
 [21] https://github.com/ChanWoo25/SuperPoint2CPP
 
-## 9. Acknowledgement
+## 10. Acknowledgement
 Thanks for Yeeun Kim help to get robust feature matching method !! 
 
-## 10. Future Works
+## 11. Future Works
    - Apply SuperPoint & SuperGlue
    - Apply GCBB (Linear time vehicle relocation in SLAM paper)
