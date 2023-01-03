@@ -200,6 +200,13 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
       
    - [3] Other Docker properties to communicate host machine
       - Ref Site: https://github.com/deepshwang/howtodocker
+   
+   - [4] Error Related
+      (1) docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].
+         - Ref Site: https://bluecolorsky.tistory.com/110
+      
+      (2) nvidia-container-cli: initialization error: load library failed: libnvidia-ml.so.1
+         - Ref Site: https://my-grope-log.tistory.com/20
 
 ## 9. Reference
 [1] Jianbo Shi and Carlo Tomasi. Good features to track. In Computer Vision and Pattern Recognition, 1994. Proceedings CVPR'94., 1994 IEEE Computer Society Conference on, pages 593–600. IEEE, 1994. \
