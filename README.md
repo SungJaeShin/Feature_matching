@@ -25,7 +25,7 @@
       - [1] Find Cuda version and cuDNN version 
       - [2] Install appropriate version of Libtorch in local desktop
          - Reference Site: https://pytorch.org/get-started/locally/
-      - [3] Add g++ in start.sh file (**Modified your own Cuda version fit into GPU**)
+      - [3] Add g++ in start.sh file
          - Reference Site: https://discuss.pytorch.org/t/compile-libtorch-with-g/114536
       - [4] Error Related
          - (1) libc10.so: cannot open shared object file: No such file or directory
