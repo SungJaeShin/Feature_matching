@@ -29,6 +29,8 @@
       - [4] Error Related
          - (1) libc10.so: cannot open shared object file: No such file or directory
             - Reference Site: https://stackoverflow.com/questions/480764/linux-error-while-loading-shared-libraries-cannot-open-shared-object-file-no-s
+         - (2) 'c10::Error' what(): open file failed because of errno 2 on fopen
+            - Reference Site: https://stackoverflow.com/questions/15753090/c-fopen-fails-for-write-with-errno-is-2
 
 ## 2. Methodology to apply feature matching
    - Feature Extraction Method
