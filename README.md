@@ -27,7 +27,7 @@
       - [3] Add g++ in start.sh file (**Modified your own Cuda version fit into GPU**)
          - Reference Site: https://discuss.pytorch.org/t/compile-libtorch-with-g/114536
       - [4] Error Related
-         - libc10.so: cannot open shared object file: No such file or directory
+         - (1) libc10.so: cannot open shared object file: No such file or directory
             - Reference Site: https://stackoverflow.com/questions/480764/linux-error-while-loading-shared-libraries-cannot-open-shared-object-file-no-s
 
 ## 2. Methodology to apply feature matching
@@ -67,8 +67,6 @@ Clone the repository and build and run simultaneously:
 
 ## 4. Changing Parameters
 - **IMAGE_NUM** (include.h): Put value to test image pair  
-
-- **USE_GPU** (include.h): Put true or false flag to use GPU resource 
 
 - **EXTRACT_MODE** (include.h):
    - 1 &rarr; apply ORB
