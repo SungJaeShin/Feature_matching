@@ -99,6 +99,8 @@ Clone the repository and build and run simultaneously:
 
 - **MIN_DIS** (include.h): Put value to change feature's Euclidean distance when using GoodFeaturesToTrack extractor
 
+- **superpoint_model_weight_path** (matching.cpp): Put absolute path for getting pre-trained SuperPoint model
+
 - **query_path, cand_path** (matching.cpp): Put absolute path for getting query image and candidate image
 
 - **save_path** (plot.h): Put absolute path for saving matching result 
@@ -180,6 +182,21 @@ This variables are not requirement, but the following variables are also conside
          <td><img src="./results/3_final_gftt_sift_daisy_result.png"/> </td>
       </tr>
    </table>
+
+- SuperPoint Result
+   - Time consumption getting Pre-trained SuperPoint model: **21.1761 ms**
+   - Result of features using SuperPoint Model
+      <table>
+         <tr>
+            <td> Query Features</td>
+            <td> Candidate Features </td>
+         </tr> 
+         <tr>
+            <td><img src="./query_superpoint.png"/> </td>
+            <td><img src="./cand_superpoint.png"/> </td>
+         </tr>
+      </table>
+
 
 ## 7. Best Results
    - ORB + SURF + BF + KNN + FM (ransacReprojThreshold = 1)  
