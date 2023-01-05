@@ -18,47 +18,53 @@ int main()
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Get pre-trained model for using SuperPoint and SuperGlue
-    auto get_pretrain_model_start = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> get_pretrain_model_duration;
 
-    std::string superpoint_model_weight_path = "../models/superpoint.pt";
-    SuperPointSLAM::SPDetector SP(superpoint_model_weight_path, torch::cuda::is_available());
-
-    // if(USE_GPU && EXTRACT_MODE == 6)
-    //     SP(superpoint_model_weight_path, torch::cuda::is_available());
-
-    auto get_pretrain_model_end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> get_pretrain_model_duration = get_pretrain_model_end - get_pretrain_model_start;
+    // Pre-trained SuperPoint Path (***** Must Put Absolute Path !! *****)
+    const std::string superpoint_model_weight_path = "../models/superpoint.pt";
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Extract Method
     auto extract_start = std::chrono::high_resolution_clock::now();
-    if(!USE_GPU && EXTRACT_MODE == 1)
+    if(EXTRACT_MODE == 1)
     {
         orb(query, query_kpt);
         orb(cand, cand_kpt);
     }
-    else if(!USE_GPU && EXTRACT_MODE == 2)
+    else if(EXTRACT_MODE == 2)
     {
         gftt(query, query_kpt);
         gftt(cand, cand_kpt);
     }
-    else if(!USE_GPU && EXTRACT_MODE == 3)
+    else if(EXTRACT_MODE == 3)
     {
         sift(query, query_kpt);
         sift(cand, cand_kpt);
     }
-    else if(!USE_GPU && EXTRACT_MODE == 4)
+    else if(EXTRACT_MODE == 4)
     {
         gftt(query, query_kpt);
         orb(cand, cand_kpt);
     }
-    else if(!USE_GPU && EXTRACT_MODE == 5)
+    else if(EXTRACT_MODE == 5)
     {
         gftt(query, query_kpt);
         sift(cand, cand_kpt);
     }
-    else if(USE_GPU && EXTRACT_MODE == 6)
+    else if(EXTRACT_MODE == 6)
     {
+        // Check Cuda Available for using GPU 
+        if(torch::cuda::is_available())
+            std::cout << "\033[1;32m Cuda Available? : Yes! \033[0m\n";
+        else
+            std::cout << "\033[1;31m Cuda Available? : No! \033[0m\n";
+
+        // Get pre-trained model for using SuperPoint and SuperGlue
+        auto get_pretrain_model_start = std::chrono::high_resolution_clock::now();
+        SuperPointSLAM::SPDetector SP(superpoint_model_weight_path, torch::cuda::is_available());
+        auto get_pretrain_model_end = std::chrono::high_resolution_clock::now();
+        get_pretrain_model_duration = get_pretrain_model_end - get_pretrain_model_start;
+
         superpoint(SP, query, query_kpt, query_des);
         superpoint(SP, cand, cand_kpt, cand_des);
     }
@@ -69,11 +75,11 @@ int main()
     /* ---------------------------------------------------------------------------------------- */ 
     // Descriptor Method
     auto descriptor_start = std::chrono::high_resolution_clock::now();
-    if(DESCRIPTOR_MODE == 1)
+    if(EXTRACT_MODE != 6 && DESCRIPTOR_MODE == 1)
         akaze(query, cand, query_kpt, cand_kpt, query_des, cand_des);
-    else if(DESCRIPTOR_MODE == 2)
+    else if(EXTRACT_MODE != 6 && DESCRIPTOR_MODE == 2)
         surf(query, cand, query_kpt, cand_kpt, query_des, cand_des);
-    else if(DESCRIPTOR_MODE == 3)
+    else if(EXTRACT_MODE != 6 && DESCRIPTOR_MODE == 3)
         daisy(query, cand, query_kpt, cand_kpt, query_des, cand_des);
     else if(DESCRIPTOR_MODE == 4)
         NULL;

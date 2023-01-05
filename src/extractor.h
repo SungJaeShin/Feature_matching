@@ -73,7 +73,12 @@ void sift(cv::Mat image, std::vector<cv::KeyPoint> &img_kpt)
 
 void superpoint(SuperPointSLAM::SPDetector model, cv::Mat image, std::vector<cv::KeyPoint> &img_kpt, cv::Mat &img_des)
 {
-    // SuperPoint can compute image keypoints and descriptor simultaneously !!
+    // SuperPoint can compute image keypoints and descriptor simultaneously !!    
+    /* Change Image Channel to Gray !
+       [-] Reference Site: https://answers.opencv.org/question/172680/conversion-of-channel-3-to-channel-1/ */
+    if(image.channels() != 1)
+        cv::cvtColor(image, image, cv::COLOR_BGRA2GRAY);
+
     /* void SPDetector::detect(cv::InputArray _image, std::vector<cv::KeyPoint>& _keypoints, cv::Mat &_descriptors)
        [-] Reference Site: https://github.com/ChanWoo25/SuperPoint2CPP/blob/master/src/SPDetector.cpp */
     model.detect(image, img_kpt, img_des);

@@ -14,11 +14,6 @@
 // image index range; 1 ~ 23
 #define IMAGE_NUM 3
 
-// flag for using GPU applied SuperPoint & SuperGlue Method 
-/* GPU mode; [true] Use GPU (using learning method) 
-             [false] Use CPU (using traditional method) */
-#define USE_GPU false
-
 // extract mode; [1] ORB [2] GFTT [3] SIFT [4] GFTT + ORB [5] GFTT + SIFT [6] SuperPoint
 // [**IMPORTANT**] if you want to use SuperPoint, then please to change flag USE_GPU to "true" !! 
 #define EXTRACT_MODE 6
