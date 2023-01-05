@@ -24,7 +24,7 @@
       - [2] Install appropriate version of Libtorch in local desktop
          - Reference Site: https://pytorch.org/get-started/locally/
          - Reference Site: https://github.com/ChanWoo25/SuperPoint2CPP/blob/master/INSTALL_LibTorch.sh
-      - [3] Add g++ in start.sh file (**Modified your own Cuda version fit GPU**)
+      - [3] Add g++ in start.sh file (**Modified your own Cuda version fit into GPU**)
          - Reference Site: https://discuss.pytorch.org/t/compile-libtorch-with-g/114536
 
 ## 2. Methodology to apply feature matching
