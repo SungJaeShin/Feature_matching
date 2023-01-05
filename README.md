@@ -26,6 +26,9 @@
          - Reference Site: https://github.com/ChanWoo25/SuperPoint2CPP/blob/master/INSTALL_LibTorch.sh
       - [3] Add g++ in start.sh file (**Modified your own Cuda version fit into GPU**)
          - Reference Site: https://discuss.pytorch.org/t/compile-libtorch-with-g/114536
+      - [4] Error Related
+         - libc10.so: cannot open shared object file: No such file or directory
+            - Reference Site: https://stackoverflow.com/questions/480764/linux-error-while-loading-shared-libraries-cannot-open-shared-object-file-no-s
 
 ## 2. Methodology to apply feature matching
    - Feature Extraction Method
@@ -202,13 +205,10 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
 
    - [1] Install Docker
       - Ref Site: https://docs.docker.com/engine/install/ubuntu/
-      
    - [2] Get Appropriate Docker Images
       - Ref Site: https://hub.docker.com/
-      
    - [3] Other Docker properties to communicate host machine
       - Ref Site: https://github.com/deepshwang/howtodocker
-   
    - [4] Error Related
       - (1) docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].
          - Ref Site: https://bluecolorsky.tistory.com/110
