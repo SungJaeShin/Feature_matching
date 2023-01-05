@@ -4,7 +4,7 @@
 #include "SuperPoint/SPDetector.cpp"
 #include "SuperPoint/SPDetector.hpp"
 #include "SuperPoint/SuperPoint.cpp"
-#include "SuperPoint/SuperPoint.cpp"
+#include "SuperPoint/SuperPoint.hpp"
 
 void gftt(cv::Mat image, std::vector<cv::KeyPoint> &img_kpt)
 {
@@ -71,7 +71,7 @@ void sift(cv::Mat image, std::vector<cv::KeyPoint> &img_kpt)
     sift -> detect(image, img_kpt);
 }
 
-void superpoint(SPDetector model, cv::Mat image, std::vector<cv::KeyPoint> &img_kpt, cv::Mat &img_des)
+void superpoint(SuperPointSLAM::SPDetector model, cv::Mat image, std::vector<cv::KeyPoint> &img_kpt, cv::Mat &img_des)
 {
     // SuperPoint can compute image keypoints and descriptor simultaneously !!
     /* void SPDetector::detect(cv::InputArray _image, std::vector<cv::KeyPoint>& _keypoints, cv::Mat &_descriptors)

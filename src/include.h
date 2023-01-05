@@ -21,11 +21,11 @@
 
 // extract mode; [1] ORB [2] GFTT [3] SIFT [4] GFTT + ORB [5] GFTT + SIFT [6] SuperPoint
 // [**IMPORTANT**] if you want to use SuperPoint, then please to change flag USE_GPU to "true" !! 
-#define EXTRACT_MODE 1
+#define EXTRACT_MODE 6
 
 // descriptor mode; [1] AKAZE [2] SURF [3] DAISY [4] SuperPoint
 // [**IMPORTANT**] if you want to use SuperPoint's Descriptor, then please to change flag USE_GPU to "true" !! 
-#define DESCRIPTOR_MODE 2
+#define DESCRIPTOR_MODE 4
 
 // matcher method; [1] BF matcher [2] FLANN matcher 
 #define MATCHER_MODE 1

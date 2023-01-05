@@ -21,8 +21,10 @@ int main()
     auto get_pretrain_model_start = std::chrono::high_resolution_clock::now();
 
     std::string superpoint_model_weight_path = "../models/superpoint.pt";
-    if(USE_GPU && EXTRACT_MODE == 6)
-        SPDetector SP(superpoint_model_weight_path, torch::cuda::is_available());
+    SuperPointSLAM::SPDetector SP(superpoint_model_weight_path, torch::cuda::is_available());
+
+    // if(USE_GPU && EXTRACT_MODE == 6)
+    //     SP(superpoint_model_weight_path, torch::cuda::is_available());
 
     auto get_pretrain_model_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> get_pretrain_model_duration = get_pretrain_model_end - get_pretrain_model_start;
