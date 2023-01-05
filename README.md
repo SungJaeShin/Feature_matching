@@ -19,7 +19,7 @@
 ## 1. Dependencies
    - OpenCV 3.2.0, OpenCV Contrib 3.2.0, C++ 11 version 
    
-   - Use LibTorch
+   - Use LibTorch (1.6.0 version)
       - [0] **Just follow up this page !!**
          - Reference Site: https://github.com/ChanWoo25/SuperPoint2CPP/blob/master/INSTALL_LibTorch.sh
       - [1] Find Cuda version and cuDNN version 
