@@ -33,6 +33,11 @@
          - (2) 'c10::Error' what(): open file failed because of errno 2 on fopen
             - Reference Site: https://stackoverflow.com/questions/15753090/c-fopen-fails-for-write-with-errno-is-2
 
+   - Get Pre-trained Model (**Thanks for freely using the pre-trained model !!**)
+      - [1] https://github.com/ChanWoo25/SuperPoint2CPP/tree/master/Weights
+      - [2] https://github.com/magicleap/SuperPointPretrainedNetwork
+      - [3] https://github.com/magicleap/SuperGluePretrainedNetwork
+
 ## 2. Methodology to apply feature matching
    - Feature Extraction Method
       - [1] ORB 
