@@ -15,12 +15,12 @@
 #define IMAGE_NUM 3
 
 // extract mode; [1] ORB [2] GFTT [3] SIFT [4] GFTT + ORB [5] GFTT + SIFT [6] SuperPoint
-// [**IMPORTANT**] if you want to use SuperPoint, then please to change flag USE_GPU to "true" !! 
-#define EXTRACT_MODE 6
+// [**IMPORTANT**] if you want to use SuperPoint, then please to check LibTorch !! 
+#define EXTRACT_MODE 1
 
 // descriptor mode; [1] AKAZE [2] SURF [3] DAISY [4] SuperPoint
-// [**IMPORTANT**] if you want to use SuperPoint's Descriptor, then please to change flag USE_GPU to "true" !! 
-#define DESCRIPTOR_MODE 4
+// [**IMPORTANT**] if you want to use SuperPoint's Descriptor, then please to check LibTorch !!  
+#define DESCRIPTOR_MODE 2
 
 // matcher method; [1] BF matcher [2] FLANN matcher 
 #define MATCHER_MODE 1
@@ -29,7 +29,7 @@
 #define MATCHING_MODE 2
 
 // rejection method; [1] fundamental matrix [2] vector field consensus
-#define REJECTION_MODE 2
+#define REJECTION_MODE 1
 
 // feature point distance when using extractor
 #define MIN_DIS 30

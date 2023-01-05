@@ -20,7 +20,7 @@ int main()
     // Get pre-trained model for using SuperPoint and SuperGlue
     std::chrono::duration<double, std::milli> get_pretrain_model_duration;
 
-    // Pre-trained SuperPoint Path (***** Must Put Absolute Path !! *****)
+    // Pre-trained SuperPoint Path (Must Put Absolute Path !!)
     const std::string superpoint_model_weight_path = "../models/superpoint.pt";
 
     /* ---------------------------------------------------------------------------------------- */ 
@@ -54,10 +54,12 @@ int main()
     else if(EXTRACT_MODE == 6)
     {
         // Check Cuda Available for using GPU 
+        std::cout << "----------------------------------------------" << std::endl;
         if(torch::cuda::is_available())
-            std::cout << "\033[1;32m Cuda Available? : Yes! \033[0m\n";
+            std::cout << "\033[1;32mCuda Available? : Yes! \033[0m\n";
         else
-            std::cout << "\033[1;31m Cuda Available? : No! \033[0m\n";
+            std::cout << "\033[1;31mCuda Available? : No! \033[0m\n";
+        std::cout << "----------------------------------------------" << std::endl;
 
         // Get pre-trained model for using SuperPoint and SuperGlue
         auto get_pretrain_model_start = std::chrono::high_resolution_clock::now();
@@ -90,6 +92,9 @@ int main()
     /* ---------------------------------------------------------------------------------------- */ 
     // See Feature Points
     drawimage(query, cand, query_kpt, cand_kpt);
+    std::cout << "query keypoint size: " << query_kpt.size() << std::endl;
+    std::cout << "cand keypoint size: " << cand_kpt.size() << std::endl;
+    std::cout << "----------------------------------------------" << std::endl;
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Matcher Method      
@@ -216,6 +221,7 @@ int main()
     std::chrono::duration<double, std::milli> outlier_rejection_duration = outlier_rejection_end - outlier_rejection_start;
 
     std::cout << "[FINAL] # of Final inlier Matches: " << count << std::endl;
+    std::cout << "----------------------------------------------" << std::endl;
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Time Consumption Results 
@@ -224,6 +230,7 @@ int main()
     std::cout << "Descriptor Time: " << descriptor_duration.count() << " ms" << std::endl;
     std::cout << "Matching Time: " << matching_duration.count() << " ms" << std::endl;
     std::cout << "Outlier Rejection Time: " << outlier_rejection_duration.count() << " ms" << std::endl;
+    std::cout << "----------------------------------------------" << std::endl;
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Draw Final Matches (Final Points) 
