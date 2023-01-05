@@ -202,7 +202,8 @@ This variables are not requirement, but the following variables are also conside
 
 ## 8. Support Docker
 Test on Ubuntu 18.04 equipped with P2000 NoteBook 
-
+   - [0] Download Basic Envrionment 
+      - ([Download](https://hub.docker.com/r/pootti524/feature_matching)) opecn 3.2.0 w/ contrib, CUDA 9.0, cuDNN 7, ubuntu 16.04 
    - [1] Install Docker
       - Ref Site: https://docs.docker.com/engine/install/ubuntu/
    - [2] Get Appropriate Docker Images
