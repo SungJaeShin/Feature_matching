@@ -20,10 +20,11 @@
    - OpenCV 3.2.0, OpenCV Contrib 3.2.0, C++ 11 version 
    
    - Use LibTorch
+      - [0] **Just follow up this page !!**
+         - Reference Site: https://github.com/ChanWoo25/SuperPoint2CPP/blob/master/INSTALL_LibTorch.sh
       - [1] Find Cuda version and cuDNN version 
       - [2] Install appropriate version of Libtorch in local desktop
          - Reference Site: https://pytorch.org/get-started/locally/
-         - Reference Site: https://github.com/ChanWoo25/SuperPoint2CPP/blob/master/INSTALL_LibTorch.sh
       - [3] Add g++ in start.sh file (**Modified your own Cuda version fit into GPU**)
          - Reference Site: https://discuss.pytorch.org/t/compile-libtorch-with-g/114536
       - [4] Error Related
