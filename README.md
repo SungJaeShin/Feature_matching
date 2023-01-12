@@ -203,7 +203,8 @@ This variables are not requirement, but the following variables are also conside
          </tr>
       </table>
 
-- SuperPoint + SuperGlue Result (Python Version)
+- SuperPoint + SuperGlue Result (Python Version) (Follow this [Page](https://github.com/magicleap/SuperGluePretrainedNetwork) !!)
+   - Red: more confident, Blue: less confident
    <table>
       <tr>
          <td> Threshold = 0.3 (inliers 64) </td>
