@@ -239,7 +239,12 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
       - (2) nvidia-container-cli: initialization error: load library failed: libnvidia-ml.so.1
          - Ref Site: https://my-grope-log.tistory.com/20
 
-## 9. Reference
+## 9. Other Error Related 
+- [1] SuperGlue Error
+   - (1) ImportError: /home/sj/anaconda3/envs/feature_matching/bin/../lib/libgio-2.0.so.0: undefined symbol: g_unix_get_passwd_entry
+      - Ref Site: https://github.com/opencv/opencv/issues/7940#issuecomment-310553884
+
+## 10. Reference
 [1] Jianbo Shi and Carlo Tomasi. Good features to track. In Computer Vision and Pattern Recognition, 1994. Proceedings CVPR'94., 1994 IEEE Computer Society Conference on, pages 593–600. IEEE, 1994. \
 [2] David G. Lowe. Distinctive image features from scale-invariant keypoints. Int. J. Comput. Vision, 60(2):91–110, November 2004. \
 [3] Herbert Bay, Tinne Tuytelaars, and Luc Van Gool. Surf: Speeded up robust features. Computer Vision–ECCV 2006, pages 404–417, 2006. \
@@ -262,9 +267,9 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
 [20] https://github.com/mpkuse/robust_feature_matching \
 [21] https://github.com/ChanWoo25/SuperPoint2CPP
 
-## 10. Acknowledgement
+## 11. Acknowledgement
 Thanks for Yeeun Kim help to get robust feature matching method !! 
 
-## 11. Future Works
-   - Apply SuperPoint & SuperGlue
+## 12. Future Works
+   - Apply SuperPoint & SuperGlue (Add Python Version)
    - Apply GCBB (Linear time vehicle relocation in SLAM paper)
