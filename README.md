@@ -270,7 +270,9 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
 [18] https://docs.opencv.org/3.4/d7/d60/classcv_1_1SIFT.html \
 [19] https://leechamin.tistory.com/330 \
 [20] https://github.com/mpkuse/robust_feature_matching \
-[21] https://github.com/ChanWoo25/SuperPoint2CPP
+[21] https://github.com/ChanWoo25/SuperPoint2CPP \
+[22] https://github.com/magicleap/SuperPointPretrainedNetwork \
+[23] https://github.com/magicleap/SuperGluePretrainedNetwork
 
 ## 11. Acknowledgement
 Thanks for Yeeun Kim help to get robust feature matching method !! 
