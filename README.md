@@ -203,6 +203,33 @@ This variables are not requirement, but the following variables are also conside
          </tr>
       </table>
 
+- SuperPoint + SuperGlue Result (Python Version)
+   <table>
+      <tr>
+         <td> Threshold = 0.3 </td>
+         <td> Threshold = 0.4 </td>
+      </tr> 
+      <tr>
+         <td><img src="./results/python/3_final_superpoint_superglue_th3.png"/> </td>
+         <td><img src="./results/python/3_final_superpoint_superglue_th4.png"/> </td>
+      </tr>
+      <tr>
+         <td> Threshold = 0.5 </td>
+         <td> Threshold = 0.6 </td>
+      </tr> 
+      <tr>
+         <td><img src="./results/python/3_final_superpoint_superglue_th5.png"/> </td>
+         <td><img src="./results/python/3_final_superpoint_superglue_th6.png"/> </td>
+      </tr>
+      <tr>
+         <td> Threshold = 0.7 </td>
+         <td> Threshold = 0.8 </td>
+      </tr> 
+      <tr>
+         <td><img src="./results/python/3_final_superpoint_superglue_th7.png"/> </td>
+         <td><img src="./results/python/3_final_superpoint_superglue_th8.png"/> </td>
+      </tr>
+   </table>
 
 ## 7. Best Results
 - C++ Results 
@@ -225,8 +252,8 @@ This variables are not requirement, but the following variables are also conside
       <img src="./results/c++/vfc/3_final_orb_daisy_bf_knn_vfc_result.png"/>
 
 - Python Version (Follow this [Page](https://github.com/magicleap/SuperGluePretrainedNetwork) !!)
-   - SuperPoint + SuperGlue (Red: more confident, Blue: less confident)
-      <img src="./results/python/3_final_superpoint_superglue.png"/>
+   - SuperPoint + SuperGlue (matching threshold = 0.8) (Red: more confident, Blue: less confident)
+      <img src="./results/python/3_final_superpoint_superglue_th8.png"/>
 
 ## 8. Support Docker
 Test on Ubuntu 18.04 equipped with P2000 NoteBook 
