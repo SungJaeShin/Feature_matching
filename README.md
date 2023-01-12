@@ -52,7 +52,7 @@
       - [4] [SuperPoint](https://github.com/ChanWoo25/SuperPoint2CPP)
 
    - Macher Method 
-      - [1] Bruth-Force Matcher (BF)
+      - [1] Brute-Force Matcher (BF)
       - [2] Fast Library for Approximate Nearest Neighbors Matcher (FLANN)
       
    - Matching Method
