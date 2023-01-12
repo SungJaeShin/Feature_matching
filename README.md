@@ -206,24 +206,24 @@ This variables are not requirement, but the following variables are also conside
 - SuperPoint + SuperGlue Result (Python Version)
    <table>
       <tr>
-         <td> Threshold = 0.3 </td>
-         <td> Threshold = 0.4 </td>
+         <td> Threshold = 0.3 (inliers 64) </td>
+         <td> Threshold = 0.4 (inliers 52) </td>
       </tr> 
       <tr>
          <td><img src="./results/python/3_final_superpoint_superglue_th3.png"/> </td>
          <td><img src="./results/python/3_final_superpoint_superglue_th4.png"/> </td>
       </tr>
       <tr>
-         <td> Threshold = 0.5 </td>
-         <td> Threshold = 0.6 </td>
+         <td> Threshold = 0.5 (inliers 47) </td>
+         <td> Threshold = 0.6 (inliers 40) </td>
       </tr> 
       <tr>
          <td><img src="./results/python/3_final_superpoint_superglue_th5.png"/> </td>
          <td><img src="./results/python/3_final_superpoint_superglue_th6.png"/> </td>
       </tr>
       <tr>
-         <td> Threshold = 0.7 </td>
-         <td> Threshold = 0.8 </td>
+         <td> Threshold = 0.7 (inliers 30) </td>
+         <td> Threshold = 0.8 (inliers 25) </td>
       </tr> 
       <tr>
          <td><img src="./results/python/3_final_superpoint_superglue_th7.png"/> </td>
