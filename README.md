@@ -225,7 +225,7 @@ This variables are not requirement, but the following variables are also conside
       <img src="./results/c++/vfc/3_final_orb_daisy_bf_knn_vfc_result.png"/>
 
 - Python Version (Follow this [Page](https://github.com/magicleap/SuperGluePretrainedNetwork) !!)
-   - SuperPoint + SuperGlue
+   - SuperPoint + SuperGlue (Red: more confident, Blue: less confident)
       <img src="./results/python/3_final_superpoint_superglue.png"/>
 
 ## 8. Support Docker
@@ -276,5 +276,4 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
 Thanks for Yeeun Kim help to get robust feature matching method !! 
 
 ## 12. Future Works
-   - Apply SuperPoint & SuperGlue (Add Python Version)
    - Apply GCBB (Linear time vehicle relocation in SLAM paper)
