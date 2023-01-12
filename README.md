@@ -127,13 +127,13 @@ This variables are not requirement, but the following variables are also conside
 ## 6. Results 
 - Results of Inlier Number and Time Consumption
    - ORB Result
-      <img src="./results/table/ORB_Result.png"/>
+      <img src="./results/c++/table/ORB_Result.png"/>
    
    - GFTT Result
-      <img src="./results/table/GFTT_Result.png"/>
+      <img src="./results/c++/table/GFTT_Result.png"/>
    
    - SIFT Result
-      <img src="./results/table/SIFT_Result.png"/>
+      <img src="./results/c++/table/SIFT_Result.png"/>
 
 - Matching Results Set
    <table>
@@ -163,9 +163,9 @@ This variables are not requirement, but the following variables are also conside
          <td> SIFT + DAISY + FM (inliers 19)</td>
       </tr> 
       <tr>
-         <td><img src="./results/3_final_sift_akaze_result.png"/> </td>
-         <td><img src="./results/3_final_sift_surf_result.png"/> </td>
-         <td><img src="./results/3_final_sift_daisy_result.png"/> </td>
+         <td><img src="./results/c++/3_final_sift_akaze_result.png"/> </td>
+         <td><img src="./results/c++/3_final_sift_surf_result.png"/> </td>
+         <td><img src="./results/c++/3_final_sift_daisy_result.png"/> </td>
       </tr>
       <tr>
          <td> GFTT + ORB + AKAZE + FM (inliers 10)</td>
