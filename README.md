@@ -2,6 +2,8 @@
 ## Applied Feature Extraction and Descriptor Method to robust matching !!
 **[Goal] We can apply various extracton and descriptor method for matching in challenging environment** 
 
+**[Advanced] Algorithm extended by applying the corresponding github page  &rarr; [Parallax](https://github.com/SungJaeShin/Parallax.git)**
+
 **[Advantage] We can easily apply various method only changing parameters!!**
 
 - Challenging Environment 
