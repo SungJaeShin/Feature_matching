@@ -36,7 +36,7 @@
 //     Pattern Recognition, 46(12), pp. 3519-3532, 2013
  
 
-#include "opencv4/opencv2/core/core.hpp"
+#include "opencv2/core/core.hpp"
 #include <iomanip>
 #include <iostream>
 
