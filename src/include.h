@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <opencv2/opencv.hpp>
+#include <opencv4/opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/core/types.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -14,12 +14,10 @@
 // image index range; 1 ~ 23
 #define IMAGE_NUM 3
 
-// extract mode; [1] ORB [2] GFTT [3] SIFT [4] GFTT + ORB [5] GFTT + SIFT [6] SuperPoint
-// [**IMPORTANT**] if you want to use SuperPoint, then please to check LibTorch !! 
+// extract mode; [1] ORB [2] GFTT [3] SIFT [4] GFTT + ORB [5] GFTT + SIFT 
 #define EXTRACT_MODE 1
 
-// descriptor mode; [1] AKAZE [2] SURF [3] DAISY [4] SuperPoint
-// [**IMPORTANT**] if you want to use SuperPoint's Descriptor, then please to check LibTorch !!  
+// descriptor mode; [1] AKAZE [2] SURF [3] DAISY 
 #define DESCRIPTOR_MODE 2
 
 // matcher method; [1] BF matcher [2] FLANN matcher 

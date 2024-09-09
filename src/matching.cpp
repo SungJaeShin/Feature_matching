@@ -17,13 +17,6 @@ int main()
     cv::Mat query_des, cand_des;
 
     /* ---------------------------------------------------------------------------------------- */ 
-    // Get pre-trained model for using SuperPoint and SuperGlue
-    std::chrono::duration<double, std::milli> get_pretrain_model_duration;
-
-    // Pre-trained SuperPoint Path (Must Put Absolute Path !!)
-    const std::string superpoint_model_weight_path = "../models/superpoint.pt";
-
-    /* ---------------------------------------------------------------------------------------- */ 
     // Extract Method
     auto extract_start = std::chrono::high_resolution_clock::now();
     if(EXTRACT_MODE == 1)
@@ -51,26 +44,7 @@ int main()
         gftt(query, query_kpt);
         sift(cand, cand_kpt);
     }
-    else if(EXTRACT_MODE == 6)
-    {
-        // Check Cuda Available for using GPU 
-        std::cout << "----------------------------------------------" << std::endl;
-        if(torch::cuda::is_available())
-            std::cout << "\033[1;32mCuda Available? : Yes! \033[0m\n";
-        else
-            std::cout << "\033[1;31mCuda Available? : No! \033[0m\n";
-        std::cout << "----------------------------------------------" << std::endl;
-
-        // Get pre-trained model for using SuperPoint and SuperGlue
-        auto get_pretrain_model_start = std::chrono::high_resolution_clock::now();
-        SuperPointSLAM::SPDetector SP(superpoint_model_weight_path, torch::cuda::is_available());
-        auto get_pretrain_model_end = std::chrono::high_resolution_clock::now();
-        get_pretrain_model_duration = get_pretrain_model_end - get_pretrain_model_start;
-
-        superpoint(SP, query, query_kpt, query_des);
-        superpoint(SP, cand, cand_kpt, cand_des);
-    }
-
+    
     auto extract_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> extract_duration = extract_end - extract_start;
 
@@ -83,8 +57,6 @@ int main()
         surf(query, cand, query_kpt, cand_kpt, query_des, cand_des);
     else if(EXTRACT_MODE != 6 && DESCRIPTOR_MODE == 3)
         daisy(query, cand, query_kpt, cand_kpt, query_des, cand_des);
-    else if(DESCRIPTOR_MODE == 4)
-        NULL;
 
     auto descriptor_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> descriptor_duration = descriptor_end - descriptor_start;
@@ -225,7 +197,6 @@ int main()
 
     /* ---------------------------------------------------------------------------------------- */ 
     // Time Consumption Results 
-    std::cout << "Get Pre-trained Mode Time: " << get_pretrain_model_duration.count() << " ms" << std::endl;
     std::cout << "Extraction Time: " << extract_duration.count() << " ms" << std::endl;
     std::cout << "Descriptor Time: " << descriptor_duration.count() << " ms" << std::endl;
     std::cout << "Matching Time: " << matching_duration.count() << " ms" << std::endl;

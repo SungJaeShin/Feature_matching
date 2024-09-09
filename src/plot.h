@@ -27,8 +27,6 @@ void drawmatches(cv::Mat image1, cv::Mat image2, std::vector<cv::KeyPoint> img1_
         method = method + "_gftt_orb";
     else if(EXTRACT_MODE == 5)
         method = method + "_gftt_sift";
-    else if(EXTRACT_MODE == 6)
-        method = method + "_superpointkpt";
 
     if(DESCRIPTOR_MODE == 1)
         method = method + "_akaze";
@@ -36,8 +34,6 @@ void drawmatches(cv::Mat image1, cv::Mat image2, std::vector<cv::KeyPoint> img1_
         method = method + "_surf";
     else if(DESCRIPTOR_MODE == 3)
         method = method + "_daisy";
-    else if(DESCRIPTOR_MODE == 4)
-        method = method + "_superpointdes";    
 
     if(MATCHER_MODE == 1)
         method = method + "_bf";
