@@ -224,8 +224,8 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
 [19] https://github.com/mpkuse/robust_feature_matching \
 
 
-## 11. Acknowledgement
+## 10. Acknowledgement
 Thanks for Yeeun Kim help to get robust feature matching method !! 
 
-## 12. Future Works
+## 11. Future Works
    - Apply GCBB (Linear time vehicle relocation in SLAM paper)
