@@ -6,6 +6,8 @@
 
 **[Advantage] We can easily apply various method only changing parameters!!**
 
+**[Without GPU Version] You can apply only traditional method (w/o GPU) version in other branch (called only_trad_method)**
+
 - Challenging Environment 
    <table>
       <tr>
