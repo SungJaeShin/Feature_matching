@@ -1,4 +1,4 @@
-# Feature Matching
+# Feature Matching (Only Traditional Method)
 ## Applied Feature Extraction and Descriptor Method to robust matching !!
 **[Goal] We can apply various extracton and descriptor method for matching in challenging environment** 
 
@@ -21,37 +21,16 @@
 ## 1. Dependencies
    - OpenCV 3.2.0, OpenCV Contrib 3.2.0, C++ 11 version 
    
-   - Use LibTorch (1.6.0 version)
-      - [0] **Just follow up this page !!**
-         - Reference Site: https://github.com/ChanWoo25/SuperPoint2CPP/blob/master/INSTALL_LibTorch.sh
-      - [1] Find Cuda version and cuDNN version 
-      - [2] Install appropriate version of Libtorch in local desktop
-         - Reference Site: https://pytorch.org/get-started/locally/
-      - [3] Add g++ in start.sh file
-         - Reference Site: https://discuss.pytorch.org/t/compile-libtorch-with-g/114536
-      - [4] Error Related
-         - (1) libc10.so: cannot open shared object file: No such file or directory
-            - Reference Site: https://stackoverflow.com/questions/480764/linux-error-while-loading-shared-libraries-cannot-open-shared-object-file-no-s
-         - (2) 'c10::Error' what(): open file failed because of errno 2 on fopen
-            - Reference Site: https://stackoverflow.com/questions/15753090/c-fopen-fails-for-write-with-errno-is-2
-
-   - Get Pre-trained Model (**Thanks for freely using the pre-trained model !!**)
-      - [1] https://github.com/ChanWoo25/SuperPoint2CPP/tree/master/Weights
-      - [2] https://github.com/magicleap/SuperPointPretrainedNetwork
-      - [3] https://github.com/magicleap/SuperGluePretrainedNetwork
-
 ## 2. Methodology to apply feature matching
    - Feature Extraction Method
       - [1] ORB 
       - [2] goodFeaturesToTrack 
       - [3] SIFT
-      - [4] [SuperPoint](https://github.com/ChanWoo25/SuperPoint2CPP)
       
    - Feature Descriptor Method
       - [1] AKAZE
       - [2] SURF 
       - [3] DAISY
-      - [4] [SuperPoint](https://github.com/ChanWoo25/SuperPoint2CPP)
 
    - Macher Method 
       - [1] Brute-Force Matcher (BF)
@@ -84,13 +63,11 @@ Clone the repository and build and run simultaneously:
    - 3 &rarr; apply SIFT
    - 4 &rarr; apply GFTT(Query) + ORB(Candidate) 
    - 5 &rarr; apply GFTT(Query) + SIFT(Candidate)
-   - 6 &rarr; apply SuperPoint
 
 - **DESCRIPTOR_MODE** (include.h): 
    - 1 &rarr; apply AKAZE
    - 2 &rarr; apply SURF
    - 3 &rarr; apply DAISY
-   - 4 &rarr; apply SuperPoint
 
 - **MATCHER_MODE** (include.h):
    - 1 &rarr; apply BF Matcher (Brute-Force)
@@ -106,8 +83,6 @@ Clone the repository and build and run simultaneously:
    - 2 &rarr; apply VFC 
 
 - **MIN_DIS** (include.h): Put value to change feature's Euclidean distance when using GoodFeaturesToTrack extractor
-
-- **superpoint_model_weight_path** (matching.cpp): Put absolute path for getting pre-trained SuperPoint model
 
 - **query_path, cand_path** (matching.cpp): Put absolute path for getting query image and candidate image
 
@@ -191,49 +166,6 @@ This variables are not requirement, but the following variables are also conside
       </tr>
    </table>
 
-- SuperPoint Result (C++ Version)
-   - Time consumption getting Pre-trained SuperPoint model: **21.1761 ms**
-   - Result of features using SuperPoint Model
-      <table>
-         <tr>
-            <td> Query Features</td>
-            <td> Candidate Features </td>
-         </tr> 
-         <tr>
-            <td><img src="./query_superpoint.png"/> </td>
-            <td><img src="./cand_superpoint.png"/> </td>
-         </tr>
-      </table>
-
-- SuperPoint + SuperGlue Result (Python Version) (Follow this [Page](https://github.com/magicleap/SuperGluePretrainedNetwork) !!)
-   - Red: more confident, Blue: less confident
-   <table>
-      <tr>
-         <td> Threshold = 0.3 (inliers 64) </td>
-         <td> Threshold = 0.4 (inliers 52) </td>
-      </tr> 
-      <tr>
-         <td><img src="./results/python/3_final_superpoint_superglue_th3.png"/> </td>
-         <td><img src="./results/python/3_final_superpoint_superglue_th4.png"/> </td>
-      </tr>
-      <tr>
-         <td> Threshold = 0.5 (inliers 47) </td>
-         <td> Threshold = 0.6 (inliers 40) </td>
-      </tr> 
-      <tr>
-         <td><img src="./results/python/3_final_superpoint_superglue_th5.png"/> </td>
-         <td><img src="./results/python/3_final_superpoint_superglue_th6.png"/> </td>
-      </tr>
-      <tr>
-         <td> Threshold = 0.7 (inliers 30) </td>
-         <td> Threshold = 0.8 (inliers 25) </td>
-      </tr> 
-      <tr>
-         <td><img src="./results/python/3_final_superpoint_superglue_th7.png"/> </td>
-         <td><img src="./results/python/3_final_superpoint_superglue_th8.png"/> </td>
-      </tr>
-   </table>
-
 ## 7. Best Results
 - C++ Results 
    - ORB + SURF + BF + KNN + FM (ransacReprojThreshold = 1)  
@@ -254,10 +186,6 @@ This variables are not requirement, but the following variables are also conside
    - ORB + DAISY + BF + KNN + VFC 
       <img src="./results/c++/vfc/3_final_orb_daisy_bf_knn_vfc_result.png"/>
 
-- Python Version (Follow this [Page](https://github.com/magicleap/SuperGluePretrainedNetwork) !!)
-   - SuperPoint + SuperGlue (matching threshold = 0.8) (Red: more confident, Blue: less confident)
-      <img src="./results/python/3_final_superpoint_superglue_th8.png"/>
-
 ## 8. Support Docker
 Test on Ubuntu 18.04 equipped with P2000 NoteBook 
    - [0] Download Basic Envrionment 
@@ -274,12 +202,7 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
       - (2) nvidia-container-cli: initialization error: load library failed: libnvidia-ml.so.1
          - Ref Site: https://my-grope-log.tistory.com/20
 
-## 9. Other Error Related 
-- [1] SuperGlue Error
-   - (1) ImportError: /home/sj/anaconda3/envs/feature_matching/bin/../lib/libgio-2.0.so.0: undefined symbol: g_unix_get_passwd_entry
-      - Ref Site: https://github.com/opencv/opencv/issues/7940#issuecomment-310553884
-
-## 10. Reference
+## 9. Reference
 [1] Jianbo Shi and Carlo Tomasi. Good features to track. In Computer Vision and Pattern Recognition, 1994. Proceedings CVPR'94., 1994 IEEE Computer Society Conference on, pages 593–600. IEEE, 1994. \
 [2] David G. Lowe. Distinctive image features from scale-invariant keypoints. Int. J. Comput. Vision, 60(2):91–110, November 2004. \
 [3] Herbert Bay, Tinne Tuytelaars, and Luc Van Gool. Surf: Speeded up robust features. Computer Vision–ECCV 2006, pages 404–417, 2006. \
@@ -300,9 +223,7 @@ Test on Ubuntu 18.04 equipped with P2000 NoteBook
 [18] https://docs.opencv.org/3.4/d7/d60/classcv_1_1SIFT.html \
 [19] https://leechamin.tistory.com/330 \
 [20] https://github.com/mpkuse/robust_feature_matching \
-[21] https://github.com/ChanWoo25/SuperPoint2CPP \
-[22] https://github.com/magicleap/SuperPointPretrainedNetwork \
-[23] https://github.com/magicleap/SuperGluePretrainedNetwork
+
 
 ## 11. Acknowledgement
 Thanks for Yeeun Kim help to get robust feature matching method !! 
